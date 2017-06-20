@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FCC Image Search Abstraction Layer</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  </head>
+  <body class="container">
+    <header>
+      <h1>
+        FCC Image Search Abstraction Layer
+      </h1>
+    </header>
+
+    <main class="jumbotron" style="background-color: rgb(250,250,250);">
+      <h2>
+        User stories:
+      </h2>
+      <blockquote>
+          <p>
+            I can get the image URLs, alt text and page urls for a set of images relating to a given search string.
+          </p>
+          <p>
+            I can paginate through the responses by adding a ?offset=2 parameter to the URL.
+          </p>
+          <p>
+            I can get a list of the most recently submitted search strings.
+          </p>       
+      </blockquote>
+      <h2>
+        Example usage:
+      </h2>
+      <pre>
+https://imgsearch.glitch.me/api/imagesearch/landscape?offset=10
+      </pre>
+      <h2>
+        Example output:
+      </h2>
+      <pre>
+[
+{
+url: "http://themindcircle.com/wp-content/uploads/2016/12/mind-bendin-landscape-architecture-1.jpg",
+snippet: "Charles Jencks' Mind-Bending Landscape Architecture",
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL5WEeW8KqcUWwDMK6d8FVGlmKIkDRCWYYIL1mfg5rk2P4KITN40sOcfoK",
+context: "http://themindcircle.com/mind-bending-landscape-architecture/"
+},
+{
+url: "https://s-media-cache-ak0.pinimg.com/736x/f1/f9/1e/f1f91ed13b684d1c1c4cd5017bae5c5a.jpg",
+snippet: "25+ Best Ideas about Landscape Illustration on Pinterest | Game ...",
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0DzLpuwA54y5p0k2zNMgoqSsM_ECUoKioUUzEA9y96kdA37Hzc7k1c10",
+context: "https://www.pinterest.com/explore/landscape-illustration/"
+},
+{
+url: "https://static.securityintelligence.com/uploads/2017/03/the-changing-fintech-landscape-in-asia-pacific-and-its-security-implications-630x330.jpg",
+snippet: "The Changing Fintech Landscape in Asia-Pacific and Its Security ...",
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWs-M7MVYG-mdppzBhLPOeXAMJO8dHy7THPxjGcWZD3H8WISWPdpyUO_YN",
+context: "https://securityintelligence.com/the-changing-fintech-landscape-in-asia-pacific-and-its-security-implications/"
+},
+{
+url: "http://cdn.mos.cms.futurecdn.net/L8ok5HpJ5Zt9hD28Fa3hBk.jpg",
+snippet: "21 landscape photography tips you'll never want to forget | TechRadar",
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRODOn8Dh8EkY1x1W82ybJOQhGP5L6A8vjPQSJaaFDawfJj_aCg4CxRWjc",
+context: "http://www.techradar.com/how-to/photography-video-capture/cameras/26-landscape-photography-tips-every-pro-still-uses-1320893"
+},
+{
+url: "https://s-media-cache-ak0.pinimg.com/736x/08/80/99/08809940d40530bfdb457d7a60466657.jpg",
+snippet: "25+ Best Ideas about Landscape Illustration on Pinterest | Game ...",
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBplMQalMx6dbNe98COgsxGPa70LiYICE0p_VnmjyVENXavgU5dFY8x1vW",
+context: "https://www.pinterest.com/explore/landscape-illustration/"
+},
+{
+url: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Inside_the_Batad_rice_terraces.jpg/200px-Inside_the_Batad_rice_terraces.jpg",
+snippet: "Landscape - Wikipedia",
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnwRXz1D0mCLoMYst-U--y_isyxqIjZCRApt6_2Fu2n2iM2xxZ4fRbQA",
+context: "https://en.wikipedia.org/wiki/Landscape"
+},
+{
+url: "https://static.pexels.com/photos/279315/pexels-photo-279315.jpeg",
+snippet: "Landscape pictures · Pexels · Free Stock Photos",
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLS2JLZuLd_tMqVIIE8uEHxaMP3VM7VGyn-AOrkQfxyZhSRCB0oHqHFFpj",
+context: "https://www.pexels.com/search/landscape/"
+},
+{
+url: "http://weknownyourdreamz.com/images/landscape/landscape-04.jpg",
+snippet: "Landscape Dream Interpretation",
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSknz5NfNmLAmqULAd3hdG05tQL2jAVRHd_481dY6lAAL44R4Dk02JS9GG7",
+context: "http://weknownyourdreamz.com/landscape.html"
+},
+{
+url: "https://sproutsocial.com/landscape/assets/images/landscape-meta-image.png",
+snippet: "Social Media Image Resizing Tool | Landscape by Sprout Social",
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL93elRQFOEu8et3x3eJCxM-EDzAgiZT3vMNkPsEbHMX-CjQl3Fr1VxSq4",
+context: "https://sproutsocial.com/landscape"
+},
+{
+url: "https://static.pexels.com/photos/24580/pexels-photo-24580.jpg",
+snippet: "Landscape pictures · Pexels · Free Stock Photos",
+thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTElOYUz1yeDdaVSzv7slow1nUQ8_879YkZS2M_Mc-7H62VUjMRiM9YYVM",
+context: "https://www.pexels.com/search/landscape/"
+}
+]        
+      </pre>
+      <h2>
+        Example usage:
+      </h2>
+      <pre>
+https://imgsearch.glitch.me/api/latest/imagesearch
+      </pre>
+      <h2>
+        Example output:
+      </h2>
+      <pre>
+[
+{
+term: "landscape",
+when: "2017-06-20T19:50:30.170Z"
+},
+{
+term: "landscape",
+when: "2017-06-20T19:50:08.500Z"
+},
+{
+term: "landscape",
+when: "2017-06-20T19:48:58.092Z"
+},
+{
+term: "cat",
+when: "2017-06-20T19:48:35.565Z"
+},
+{
+term: "landscape",
+when: "2017-06-20T19:48:28.536Z"
+},
+{
+term: "human",
+when: "2017-06-20T19:47:26.003Z"
+},
+{
+term: "landscape",
+when: "2017-06-20T19:47:21.958Z"
+},
+{
+term: "landscape",
+when: "2017-06-20T19:30:28.428Z"
+}
+]        
+      </pre>
+    </main>
+
+    <footer>
+      <p>
+        <a href="https://glitch.com">
+          Remix this in Glitch
+        </a>        
+      </p>
+      <p>
+        <a href="https://github.com/barottomartin/fcc-image-search">
+          Source code
+        </a>
+      </p>
+    </footer>
+  </body>
+</html>

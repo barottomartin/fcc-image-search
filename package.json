@@ -1,0 +1,27 @@
+{
+  "name": "fcc-image-search",
+  "version": "0.0.1",
+  "description": "FCC Image Search Abstraction Layer challenge",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.15.3",
+    "mongodb": "^2.2.28",
+    "google-images": "^2.1.0"
+  },
+  "engines": {
+    "node": "8.1.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/barottomartin/fcc-image-search"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
